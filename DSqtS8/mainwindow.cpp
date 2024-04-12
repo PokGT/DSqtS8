@@ -36,9 +36,8 @@ void MainWindow::ouvrirImage(void)
     if (!fileName.isEmpty()) {
 
         _Image.size();
-
         _Image = QImage(fileName);
-        //_Image.scaled(this->ui->centralwidget->width(), this->ui->centralwidget->height(), Qt::KeepAspectRatio);
+        DimentionementImage();
         if (_Image.isNull()) {
             QMessageBox::critical(this, "Erreur", "Impossible de charger l'image.");
         } else {
@@ -49,18 +48,31 @@ void MainWindow::ouvrirImage(void)
     }
     update();
 }
+
+void MainWindow::DimentionementImage(void)
+{
+    QSize dimention = _Image.size();
+    if(dimention.height()>600)
+    {
+        int newHeight = 600;
+        _Image = _Image.scaledToHeight(newHeight, Qt::SmoothTransformation);
+        this->resize(QSize(_Image.size().width(),600));
+        update();
+    }
+}
+
 void MainWindow::SauvegarderImage(void)
 {
-    if (!currentImage.isNull()) {
-        QImage selectedImage = currentImage.copy(selectionRect);
-        QString savePath = QFileDialog::getSaveFileName(this, tr("Save Selection"), "", tr("Image Files (*.png)"));
+    if (!_Image.isNull()) {
+        QImage selectedImage = _Image.copy(_SelectionRect);
+        QString savePath = QFileDialog::getSaveFileName(this, tr("Sauvegarde Sous Image"), "", tr("Image Files (*.png)"));
         if (!savePath.isEmpty()) {
             if (!selectedImage.isNull()) {
                 if (!selectedImage.save(savePath)) {
-                    QMessageBox::critical(this, tr("Error"), tr("Failed to save selection!"));
+                    QMessageBox::critical(this, tr("Erreur"), tr("Erreur lore de la Sauvegarde!"));
                 }
             } else {
-                QMessageBox::critical(this, tr("Error"), tr("No selection to save!"));
+                QMessageBox::critical(this, tr("Erreur"), tr("pas de selection !"));
             }
         }
     }

@@ -22,6 +22,7 @@ public:
 
     void ouvrirImage(void);
     void SauvegarderImage(void);
+    void DimentionementImage(void);
 
 private slots :
     void paintEvent(QPaintEvent *);
