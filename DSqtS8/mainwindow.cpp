@@ -50,5 +50,17 @@ void MainWindow::ouvrirImage(void)
 }
 void MainWindow::SauvegarderImage(void)
 {
-    qDebug() <<"cc 20";
+    if (!currentImage.isNull()) {
+        QImage selectedImage = currentImage.copy(selectionRect);
+        QString savePath = QFileDialog::getSaveFileName(this, tr("Save Selection"), "", tr("Image Files (*.png)"));
+        if (!savePath.isEmpty()) {
+            if (!selectedImage.isNull()) {
+                if (!selectedImage.save(savePath)) {
+                    QMessageBox::critical(this, tr("Error"), tr("Failed to save selection!"));
+                }
+            } else {
+                QMessageBox::critical(this, tr("Error"), tr("No selection to save!"));
+            }
+        }
+    }
 }
