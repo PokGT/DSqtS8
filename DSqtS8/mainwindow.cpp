@@ -85,43 +85,55 @@ void MainWindow::on_verticalSlider_valueChanged(int value)
     int y1 = value;
     int y2= this->ui->verticalSlider_2->value();
 
-    _SelectionRect.setRect(x1,y1,x2-x1,y2-y1);
+    _SelectionRect.setRect(x1,y1,x2,y2);
     update();
 }
 
 
 void MainWindow::on_horizontalSlider_valueChanged(int value)
 {
-    int x1 = value;
-    int x2 = this->ui->horizontalSlider_2->value();
-    int y1 = this->ui->verticalSlider->value();
-    int y2= this->ui->verticalSlider_2->value();
+    if(!_SelectionRect.isNull()){
+        int x1 = value;
+        int x2 = this->ui->horizontalSlider_2->value();
+        int y1 = this->ui->verticalSlider->value();
+        int y2= this->ui->verticalSlider_2->value();
 
-    _SelectionRect.setRect(x1,y1,x2-x1,y2-y1);
-    update();
+        _SelectionRect.setRect(x1,y1,x2,y2);
+        update();
+    }
+
 }
 
 
 void MainWindow::on_horizontalSlider_2_valueChanged(int value)
 {
-    int x1 = this->ui->horizontalSlider->value();
-    int x2 = value;
-    int y1 = this->ui->verticalSlider->value();
-    int y2= this->ui->verticalSlider_2->value();
+    if(!_SelectionRect.isNull()){
+        int x1 = this->ui->horizontalSlider->value();
+        int x2 = value;
+        int y1 = this->ui->verticalSlider->value();
+        int y2= this->ui->verticalSlider_2->value();
 
-    _Rect.setRect(x1,y1,x2-x1,y2-y1);
+        _SelectionRect.setRect(x1,y1,x2,y2);
+        update();
+
+
+    }
+
 }
 
 
 void MainWindow::on_verticalSlider_2_valueChanged(int value)
 {
-    int x1 = this->ui->horizontalSlider->value();
-    int x2 = this->ui->horizontalSlider_2->value();
-    int y1 = this->ui->verticalSlider->value();
-    int y2= value;
+    if(!_SelectionRect.isNull()){
+        int x1 = this->ui->horizontalSlider->value();
+        int x2 = this->ui->horizontalSlider_2->value();
+        int y1 = this->ui->verticalSlider->value();
+        int y2= value;
 
-    _SelectionRect.setRect(x1,y1,x2-x1,y2-y1);
-    update();
+        _SelectionRect.setRect(x1,y1,x2,y2);
+        update();
+    }
+
 }
 
 void MainWindow::ActualiserBarres(int width, int height)
