@@ -17,6 +17,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void ouvrirImage(void);
+    void SauvegarderImage(void);
+
 private:
     Ui::MainWindow *ui;
 };
