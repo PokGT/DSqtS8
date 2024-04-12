@@ -77,3 +77,62 @@ void MainWindow::SauvegarderImage(void)
         }
     }
 }
+
+void MainWindow::on_verticalSlider_valueChanged(int value)
+{
+    int x1 = this->ui->horizontalSlider->value();
+    int x2 = this->ui->horizontalSlider_2->value();
+    int y1 = value;
+    int y2= this->ui->verticalSlider_2->value();
+
+    _Rect.setRect(x1,y1,x2-x1,y2-y1);
+}
+
+
+void MainWindow::on_horizontalSlider_valueChanged(int value)
+{
+    int x1 = value;
+    int x2 = this->ui->horizontalSlider_2->value();
+    int y1 = this->ui->verticalSlider->value();
+    int y2= this->ui->verticalSlider_2->value();
+
+    _Rect.setRect(x1,y1,x2-x1,y2-y1);
+}
+
+
+void MainWindow::on_horizontalSlider_2_valueChanged(int value)
+{
+    int x1 = this->ui->horizontalSlider->value();
+    int x2 = value;
+    int y1 = this->ui->verticalSlider->value();
+    int y2= this->ui->verticalSlider_2->value();
+
+    _Rect.setRect(x1,y1,x2-x1,y2-y1);
+}
+
+
+void MainWindow::on_verticalSlider_2_valueChanged(int value)
+{
+    int x1 = this->ui->horizontalSlider->value();
+    int x2 = this->ui->horizontalSlider_2->value();
+    int y1 = this->ui->verticalSlider->value();
+    int y2= value;
+
+    _Rect.setRect(x1,y1,x2-x1,y2-y1);
+}
+
+void MainWindow::ActualiserBarres(int width, int height)
+{
+    //Actualiser le maximum
+    this->ui->horizontalSlider->setMaximum(height);
+    this->ui->horizontalSlider_2->setMaximum(height);
+    this->ui->verticalSlider->setMaximum(width);
+    this->ui->verticalSlider_2->setMaximum(width);
+    //Actualiser la taille et la position
+    this->ui->centralwidget->setMaximumWidth(width);
+    this->ui->centralwidget->setMaximumHeight(height);
+    this->ui->horizontalSlider->setMaximumWidth(width);
+    this->ui->horizontalSlider_2->setMaximumWidth(width);
+    this->ui->verticalSlider_2->setMaximumHeight(height);
+    this->ui->verticalSlider_2->setMaximumHeight(height);
+}
