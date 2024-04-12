@@ -28,8 +28,8 @@ private slots :
 
 private:
     Ui::MainWindow *ui;
+    QRect _Rect;
+    QImage _Image;
 
-    QImage* _Image;
-    QPainter* _Painter;
 };
 #endif // MAINWINDOW_H
