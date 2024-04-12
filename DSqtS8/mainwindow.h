@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QPainter>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,7 +23,13 @@ public:
     void ouvrirImage(void);
     void SauvegarderImage(void);
 
+private slots :
+    void paintEvent(QPaintEvent *);
+
 private:
     Ui::MainWindow *ui;
+
+    QImage* _Image;
+    QPainter* _Painter;
 };
 #endif // MAINWINDOW_H
