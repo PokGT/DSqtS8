@@ -21,10 +21,10 @@ MainWindow::~MainWindow()
 void MainWindow::paintEvent(QPaintEvent *)
 {
     if(!_Image.isNull()){
-        QPainter _Painter(this);
-        _Painter.setPen(Qt::red);
-        _Painter.drawImage(0,0,_Image);
-        _Painter.drawRect(_Rect);
+        QPainter Painter(this);
+        Painter.setPen(Qt::red);
+        Painter.drawImage(0,0,_Image);
+        Painter.drawRect(_Rect);
     }
 }
 
