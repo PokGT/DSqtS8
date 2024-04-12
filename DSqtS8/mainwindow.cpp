@@ -35,9 +35,10 @@ void MainWindow::ouvrirImage(void)
     QString fileName = QFileDialog::getOpenFileName(this, "Sélectionner une image", "", "Images (*.png)");
     if (!fileName.isEmpty()) {
 
+        _Image.size();
 
         _Image = QImage(fileName);
-
+        //_Image.scaled(this->ui->centralwidget->width(), this->ui->centralwidget->height(), Qt::KeepAspectRatio);
         if (_Image.isNull()) {
             QMessageBox::critical(this, "Erreur", "Impossible de charger l'image.");
         } else {
