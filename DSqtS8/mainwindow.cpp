@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    _SelectionRect = QRect(100, 100, 200, 150);
 
     connect(ui->action_ouvrir,&QAction::triggered,this,&MainWindow::ouvrirImage);
     connect(ui->actionSauvegarder_Image,&QAction::triggered,this,&MainWindow::SauvegarderImage);
@@ -25,6 +26,7 @@ void MainWindow::paintEvent(QPaintEvent *)
         Painter.setPen(Qt::red);
         Painter.drawImage(0,0,_Image);
         Painter.drawRect(_Rect);
+        Painter.drawRect(_SelectionRect);
     }
 }
 

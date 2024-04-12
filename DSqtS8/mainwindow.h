@@ -30,6 +30,7 @@ private:
     Ui::MainWindow *ui;
     QRect _Rect;
     QImage _Image;
+    QRect _SelectionRect;
 
 };
 #endif // MAINWINDOW_H
