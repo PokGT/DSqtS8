@@ -85,7 +85,8 @@ void MainWindow::on_verticalSlider_valueChanged(int value)
     int y1 = value;
     int y2= this->ui->verticalSlider_2->value();
 
-    _Rect.setRect(x1,y1,x2-x1,y2-y1);
+    _SelectionRect.setRect(x1,y1,x2-x1,y2-y1);
+    update();
 }
 
 
@@ -96,7 +97,8 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
     int y1 = this->ui->verticalSlider->value();
     int y2= this->ui->verticalSlider_2->value();
 
-    _Rect.setRect(x1,y1,x2-x1,y2-y1);
+    _SelectionRect.setRect(x1,y1,x2-x1,y2-y1);
+    update();
 }
 
 
@@ -118,7 +120,8 @@ void MainWindow::on_verticalSlider_2_valueChanged(int value)
     int y1 = this->ui->verticalSlider->value();
     int y2= value;
 
-    _Rect.setRect(x1,y1,x2-x1,y2-y1);
+    _SelectionRect.setRect(x1,y1,x2-x1,y2-y1);
+    update();
 }
 
 void MainWindow::ActualiserBarres(int width, int height)
